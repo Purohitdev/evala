@@ -8,7 +8,7 @@ export interface sentimentAnalytics extends Document {
     f1: number;
     average_inference_time: number;
     total_time: number;
-    estimited_cost: number;
+    estimated_cost: number;
     total_cost: number;
     category: string;
     dataset: string;
@@ -23,7 +23,7 @@ const sentimentAnalyticsSchema: Schema<sentimentAnalytics> = new Schema({
     f1: { type: Number, required: true },
     average_inference_time: { type: Number, required: true },
     total_time: { type: Number, required: true },
-    estimited_cost: { type: Number, required: true },
+    estimated_cost: { type: Number, required: true },
     total_cost: { type: Number, required: true },
     category: { type: String, required: true },
     dataset: { type: String, required: true },

@@ -1,53 +1,56 @@
 import dbConnect from "@/lib/dbConnect";
-import sentimentAnalyticsModel from "@/model/sentimentAnalyticsModel";
-import machineTranslationModel from "@/model/machineTranslationModel";
+import sentimentAnalytics from "@/model/sentimentAnalytics";
+import machineTranslation from "@/model/machineTranslation";
+import { sentimentAnalyticsSchema } from "@/schema/sentimentAnalyticsSchema";
+import { machineTranslationSchema } from "@/schema/machineTranslationSchema";
 
-export async function POST(req: Request) {
-
+export async function GET() {
     await dbConnect();
 
     try {
+        const sentimentAnalyticsData = await sentimentAnalytics.find({});
+        const machineTranslationData = await machineTranslation.find({});
 
-        const data = await req.json();
+        // Instead of returning an error, return empty arrays.
+        const validatedSentimentAnalytics = sentimentAnalyticsSchema.safeParse(
+            sentimentAnalyticsData || []
+        );
+        const validatedMachineTranslation = machineTranslationSchema.safeParse(
+            machineTranslationData || []
+        );
 
-        if (!data) {
-
-            return Response.json({ success: false, message: "No filter found" }, { status: 404 });
-
+        if (!validatedSentimentAnalytics.success) {
+            return Response.json(
+                {
+                    success: false,
+                    message: `Error validating data: ${validatedSentimentAnalytics.error}`
+                },
+                { status: 500 }
+            );
         }
 
-        if (data.category === "sentiment-analysis") {
-
-            const sentiment = await sentimentAnalyticsModel.find({ name: data.name });
-
-            if (!sentiment) {
-
-                return Response.json({ success: false, message: "No data found" }, { status: 404 });
-
-            }
-
-            return Response.json({ success: true , message: "Data fetched sucessfully", data: sentiment }, { status: 200 });
-
+        if (!validatedMachineTranslation.success) {
+            return Response.json(
+                {
+                    success: false,
+                    message: `Error validating data: ${validatedMachineTranslation.error}`
+                },
+                { status: 500 }
+            );
         }
 
-        if (data.category === "machine-translation") {
-
-            const translation = await machineTranslationModel.find({ name: data.name });
-
-            if (!translation) {
-
-                return Response.json({ success: false, message: "No data found" }, { status: 404 });
-
-            }
-
-            return Response.json({ success: true , message: "Data fetched sucessfully", data: translation }, { status: 200 });
-
-        }
-
+        return Response.json(
+            {
+                success: true,
+                sentimentAnalytics: validatedSentimentAnalytics.data,
+                machineTranslation: validatedMachineTranslation.data
+            },
+            { status: 200 }
+        );
     } catch (error) {
-        
-        return Response.json({ success: false, message: `Error fetching data: ${error}` }, { status: 500 });
-
+        return Response.json(
+            { success: false, message: `Error fetching data: ${error}` },
+            { status: 500 }
+        );
     }
-
 }
