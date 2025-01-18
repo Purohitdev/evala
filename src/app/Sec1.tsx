@@ -115,7 +115,7 @@ function Sec1() {
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        className={`px-3 py-1 rounded-md ${activeTab === tab ? 'border-gray border-2 border text-black bg-gray-100' : 'border'
+                        className={`px-3 py-1 rounded-md ${activeTab === tab ? ' bg-gray-200 border-gray border-2 border text-black bg-gray-100' : 'border'
                             }`}
                     >
                         {tab}

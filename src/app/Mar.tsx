@@ -16,7 +16,7 @@ const logos = [
 
 const Mar: React.FC = () => {
   return (
-    <div className="bg-white py-4 pb-5  ">
+    <div className="bg-[#f4f4f4] py-4 pb-10 pt-10  ">
       <Marquee speed={50} autoFill={true} >
         {logos.map((logo, index) => (
           <img

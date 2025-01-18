@@ -21,7 +21,7 @@ const Sec2: React.FC = () => {
                     <ul className="space-y-4">
                         {links.map((link, index) => (
                             <li key={index}>
-                                <a href={link.href} className="text-blue-500 font-semibold hover:underline">
+                                <a href={link.href} className="text-gray-500 font-semibold hover:underline">
                                     {link.text}
                                 </a>
                             </li>
