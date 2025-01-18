@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import sentimentAnalyticsModel from "@/model/SentimentAnalyticsModel";
+import sentimentAnalyticsModel from "@/model/sentimentAnalyticsModel";
 import machineTranslationModel from "@/model/machineTranslationModel";
 
 export async function POST(req: Request) {
