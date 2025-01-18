@@ -1,8 +1,11 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface MachineTranslation extends Document {
+export interface Client extends Document {
     name: string;
-    bleu_score: number;
+    precision: number;
+    accuracy: number;
+    recall: number;
+    f1: number;
     average_inference_time: number;
     total_time: number;
     estimated_cost: number;
@@ -11,9 +14,12 @@ export interface MachineTranslation extends Document {
     dataset: string;
 }
 
-const machineTranslationSchema: Schema<MachineTranslation> = new Schema({
+const ClientSchema: Schema<Client> = new Schema({
     name: { type: String, required: true },
-    bleu_score: { type: Number, required: true },
+    precision: { type: Number, required: true },
+    accuracy: { type: Number, required: true },
+    recall: { type: Number, required: true },
+    f1: { type: Number, required: true },
     average_inference_time: { type: Number, required: true },
     total_time: { type: Number, required: true },
     estimated_cost: { type: Number, required: true },
@@ -22,6 +28,7 @@ const machineTranslationSchema: Schema<MachineTranslation> = new Schema({
     dataset: { type: String, required: true },
 });
 
-const machineTranslationModel = (mongoose.models.MachineTranslation as mongoose.Model<MachineTranslation>) || mongoose.model<MachineTranslation>("MachineTranslation", machineTranslationSchema);
+const ClientModel = (mongoose.models.Client as mongoose.Model<Client>) || mongoose.model<Client>("Client", ClientSchema);
 
-export default machineTranslationModel;
+
+export default ClientModel;
