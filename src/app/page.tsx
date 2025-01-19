@@ -6,6 +6,7 @@ import Mar from "@/components/Mar";
 import Sec3 from "@/components/Sec3";
 import Sec4 from "@/components/Sec4";
 import Sec6 from "@/components/Sec6";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Sec3/>
       <Sec4/>
       <Sec6/>
+      <Footer/>
     </div>
   );
 }
