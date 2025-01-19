@@ -47,10 +47,10 @@ const ChatBot = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col justify-end p-4">
+        <div className="h-[120vh] min-w-full flex flex-col justify-end p-4 overflow-hidden">
             <div className="flex flex-col space-y-4 p-4 bg-white rounded-lg shadow-lg max-w-lg mx-auto">
                 {/* Chat History */}
-                <div className="flex flex-col space-y-2 overflow-y-auto h-64">
+                <div className="flex flex-col space-y-2 overflow-y-auto h-[100%] ">
                     {chatHistory.map((message, index) => (
                         <div
                             key={index}
@@ -68,19 +68,14 @@ const ChatBot = () => {
                         value={userInput}
                         onChange={(e) => setUserInput(e.target.value)}
                         placeholder="Ask a question..."
-                        className="p-2 rounded-lg border border-gray-300 flex-1"
+                        className="p-2 rounded-lg  border-gray-300 flex-1 w-full"
                     />
                     <button type="submit" className="bg-blue-500 text-white p-2 rounded-lg" disabled={loading}>
                         {loading ? "Loading..." : "Send"}
                     </button>
                 </form>
 
-                {/* Bot Response (Optional, if you want to highlight it separately)
-                {botResponse && (
-                    <div className="mt-4 p-2 rounded-lg bg-gray-200">
-                        <span>{botResponse}</span>
-                    </div>
-                )} */}
+            
             </div>
         </div>
     );
