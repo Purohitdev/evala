@@ -1,13 +1,11 @@
-import Image from "next/image";
-import Hero from "./Hero";
-import Navbar from "./Navbar";
-import Sec1 from "./Sec1";
-import Sec2 from "./Sec2";
-import Mar from "./Mar";
-import Sec3 from "./Sec3";
-import Sec4 from "./Sec4";
-import Sec5 from "./Sec5";
-import Sec6 from "@/Sec6";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import Sec1 from "@/components/Sec1";
+import Sec2 from "@/components/Sec2";
+import Mar from "@/components/Mar";
+import Sec3 from "@/components/Sec3";
+import Sec4 from "@/components/Sec4";
+import Sec6 from "@/components/Sec6";
 
 export default function Home() {
   return (
@@ -19,7 +17,6 @@ export default function Home() {
       <Mar/>
       <Sec3/>
       <Sec4/>
-      <Sec5/>
       <Sec6/>
     </div>
   );

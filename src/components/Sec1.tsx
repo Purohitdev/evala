@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { GoArrowUpRight } from "react-icons/go";
-
+import Link from 'next/link';
 
 function Sec1() {
     const [activeTab, setActiveTab] = useState('Image'); // Default tab is 'Image'
@@ -19,10 +19,6 @@ function Sec1() {
                                 <div className="flex mt-3 gap-3">
                                     <button className="bg-black text-white flex items-center gap-2 rounded-lg px-3 py-1 hover:bg-gray-800 transition">
                                         Try Eval.ai
-                                        <GoArrowUpRight />
-                                    </button>
-                                    <button className=" text-black flex items-center gap-2 rounded-lg px-4 py-2">
-                                        xyszxjos
                                         <GoArrowUpRight />
                                     </button>
                                 </div>

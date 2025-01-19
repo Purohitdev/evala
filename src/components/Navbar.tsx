@@ -1,13 +1,15 @@
+'use client';
+
 import React from 'react';
 import { GoArrowUpRight } from "react-icons/go";
 
 const Navbar = () => {
     const navLinks = [
-        { name: "Home", href: "/" },
-        { name: "Models", href: "/models" },
-        { name: "Applications", href: "/applications" },
-        { name: "Deployment", href: "/deployment" },
-        { name: "Company", href: "/company" },
+        { name: "Home", href: "/", disabled: false },
+        { name: "Models", href: "/categories", disabled: false },
+        { name: "Applications", href: "/applications", disabled: true },
+        { name: "Deployment", href: "/deployment", disabled: true },
+        { name: "Company", href: "/company", disabled: true },
     ];
 
     return (
@@ -22,7 +24,12 @@ const Navbar = () => {
                         <li key={index}>
                             <a
                                 href={link.href}
-                                className="hover:text-gray-900 transition-colors"
+                                className={`hover:text-gray-900 transition-colors ${link.disabled ? "disabled" : ""}`}
+                                onMouseOver={(e) => {
+                                    if (link.disabled) {
+                                        e.preventDefault();
+                                    }
+                                }}
                             >
                                 {link.name}
                             </a>
@@ -31,7 +38,7 @@ const Navbar = () => {
                 </ul>
 
                 <button className="bg-black text-white flex items-center gap-2 rounded-lg px-4 py-2 hover:bg-gray-800 transition">
-                   Login 
+                    Login
                     <GoArrowUpRight />
                 </button>
             </div>

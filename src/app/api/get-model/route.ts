@@ -9,9 +9,7 @@ export async function GET() {
     try {
 
         const products = await Product.find({});
-        console.log(products);
         const clients = await Client.find({});
-        console.log(clients);
 
         if (!products || !clients) {
 
