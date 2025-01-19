@@ -32,15 +32,15 @@ const SentimentModelsComparison: React.FC = () => {
 
     const chartData = sentimentData.map((model) => ({
         name: model.name,
-        accuracy: model.bleu_score,
+        bleuscore: model.bleu_score,
         totaltime: model.total_time,
         estimatedtotal_time: model.estimated_cost,
         total_cost: model.total_cost,
     }));
 
     const chartConfig = {
-        accuracy: {
-            label: "Accuracy",
+        bleuscore: {
+            label: "Bleu Score",
             color: "hsl(var(--chart-1))",
         },
         totaltime: {
@@ -115,7 +115,7 @@ const SentimentModelsComparison: React.FC = () => {
                                     cursor={false}
                                     content={<ChartTooltipContent indicator="dashed" />}
                                 />
-                                <Bar dataKey="accuracy" fill="var(--color-accuracy)" radius={4} />
+                                <Bar dataKey="bleuscore" fill="var(--color-accuracy)" radius={4} />
                                 <Bar dataKey="totaltime" fill="var(--color-totaltime)" radius={4} />
                                 <Bar dataKey="estimatedtotal_time" fill="var(--color-estimatedtotal_time)" radius={4} />
                                 <Bar dataKey="total_cost" fill="var(--color-total_cost)" radius={4} />
@@ -129,7 +129,7 @@ const SentimentModelsComparison: React.FC = () => {
             <div className="flex flex-col max-h-[90vh] items-center w-[40%]  border border-gray-200 rounded-3xl ">
             <h1 className="py-4 text-2xl font-semibold">Need Help ?</h1>
 
-                <ChatBot />
+                <ChatBot data={sentimentData}/>
 
             </div>
 

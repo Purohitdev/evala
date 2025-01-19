@@ -2,13 +2,18 @@
 import { useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const ChatBot = () => {
+type ChatBotProps = {
+    data: any;
+};
+
+const ChatBot = ({ data }: ChatBotProps) => {
+    const modelInfo = JSON.stringify(data)
     const [userInput, setUserInput] = useState("");
     const [botResponse, setBotResponse] = useState("");
     const [loading, setLoading] = useState(false);
     const [chatHistory, setChatHistory] = useState<{ sender: string, text: string }[]>([]);
 
-    const context = "use the given data to help the user for selecting the right ai model for their requirements according to their need";
+    const context = `Use the provided data to assist the user in selecting the appropriate AI model for their requirements. Here is the data: ${modelInfo}`;
 
     const handleUserInput = async (e: React.FormEvent) => {
         e.preventDefault();
