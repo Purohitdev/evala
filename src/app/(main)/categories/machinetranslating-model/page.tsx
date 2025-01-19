@@ -16,6 +16,7 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart"
 import { BarChart, CartesianGrid, XAxis, Bar } from 'recharts';
+import ChatBot from '@/components/ChatBot';
 
 const SentimentModelsComparison: React.FC = () => {
     const [sentimentData, setSentimentData] = useState<any[]>([]);
@@ -121,6 +122,7 @@ const SentimentModelsComparison: React.FC = () => {
                     </CardContent>
                 </Card>
             </div>
+            <ChatBot/>
         </div>
     );
 };
