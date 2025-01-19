@@ -58,43 +58,45 @@ const SentimentModelsComparison: React.FC = () => {
     } satisfies ChartConfig
 
     return (
-        <div className="flex flex-col items-center p-8">
-            <div className="flex flex-col items-center w-full max-w-4xl">
-                <div className="flex flex-row justify-around w-full">
-                    {sentimentData.map((model, index) => (
-                        <div key={index} className="w-2/5 bg-white shadow-md rounded-lg p-6">
-                            <h2 className="text-2xl font-bold mb-4">{model.name}</h2>
-                            <p className="text-sm mb-4">Dataset {model.dataset}</p>
-                            <table className="min-w-full bg-white">
-                                <thead>
-                                    <tr>
-                                        <th className="py-2 px-4 border-b">Feature</th>
-                                        <th className="py-2 px-4 border-b">Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td className="py-2 px-4 border-b">Bleu Score</td>
-                                        <td className="py-2 px-4 border-b">{model.bleu_score}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="py-2 px-4 border-b">Total time used for 10% data</td>
-                                        <td className="py-2 px-4 border-b">{Math.floor(model.total_time)} Seconds</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="py-2 px-4 border-b">Estimated time for 100% data</td>
-                                        <td className="py-2 px-4 border-b">{Math.floor(model.estimated_total_time)} Seconds</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="py-2 px-4 border-b">Total Cost</td>
-                                        <td className="py-2 px-4 border-b">${model.total_cost}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    ))}
+        <div className="flex gap-5 min-h-screen  p-8 ">
+            <div className="flex flex-col  min-h-[90vh] w-[100%] border border-gray-200 px-5 py-4 rounded-3xl">
+                <div className="py-4 w-full ">
+                    <div className="flex flex-row justify-around w-full gap-5">
+                        {sentimentData.map((model, index) => (
+                            <div key={index} className="w-[50%] bg-white shadow-md rounded-lg p-6">
+                                <h2 className="text-2xl font-bold mb-4">{model.name}</h2>
+                                <p className="text-sm mb-4">Dataset {model.dataset}</p>
+                                <table className="min-w-full bg-white">
+                                    <thead>
+                                        <tr>
+                                            <th className="py-2 px-4 border-b text-start">Feature</th>
+                                            <th className="py-2 px-4 border-b text-start">Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td className="py-2 px-4 border-b text-start">Bleu Score</td>
+                                            <td className="py-2 px-4 border-b text-start">{model.bleu_score}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="py-2 px-4 border-b text-start">Total time used for 10% data</td>
+                                            <td className="py-2 px-4 border-b text-start">{Math.floor(model.total_time)} Seconds</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="py-2 px-4 border-b text-start">Estimated time for 100% data</td>
+                                            <td className="py-2 px-4 border-b text-start">{Math.floor(model.estimated_total_time)} Seconds</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="py-2 px-4 border-b text-start">Total Cost</td>
+                                            <td className="py-2 px-4 border-b text-start">${model.total_cost}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <Card className="mt-8 w-full">
+                <Card className="mt-2 w-full ">
                     <CardHeader>
                         <CardTitle>Model Comparison Chart</CardTitle>
                         <CardDescription>Comparison of different models</CardDescription>
@@ -120,9 +122,21 @@ const SentimentModelsComparison: React.FC = () => {
                             </BarChart>
                         </ChartContainer>
                     </CardContent>
-                </Card>
+                </Card> 
+
             </div>
-            <ChatBot/>
+
+            <div className="flex flex-col max-h-[90vh] items-center w-[40%]  border border-gray-200 rounded-3xl ">
+            <h1 className="py-4 text-2xl font-semibold">Need Help ?</h1>
+
+                <ChatBot />
+
+            </div>
+
+
+
+
+
         </div>
     );
 };
