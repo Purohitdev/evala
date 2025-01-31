@@ -27,7 +27,7 @@ const ChatBot = ({ data }: ChatBotProps) => {
 
         try {
             // Directly using the Gemini API key in the frontend (not secure for production)
-            const genAI = new GoogleGenerativeAI("AIzaSyA4iGtQ-KeTzOAPLO4O-X-YnwM4VrtJ7m0"); // Replace with your API key
+            const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API || ""); // Replace with your API key
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
             // Include the context in the prompt to guide the bot's behavior
